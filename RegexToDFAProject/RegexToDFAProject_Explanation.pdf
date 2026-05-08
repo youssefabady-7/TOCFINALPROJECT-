@@ -1,0 +1,276 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R 9 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Length 2641 >>
+stream
+BT
+/F1 10.5 Tf
+14 TL
+54 742 Td
+(Regex To DFA Project - Step By Step Code Explanation) Tj
+T*
+() Tj
+T*
+(1. PROJECT GOAL) Tj
+T*
+() Tj
+T*
+(This project converts a regular expression into a working minimized DFA. It is designed) Tj
+T*
+(as a university Formal Languages and Automata Theory project, so the code is separated) Tj
+T*
+(into small classes and the console menu is easy to present.) Tj
+T*
+(The full path is: user input regex -> validation and postfix conversion -> Thompson NFA) Tj
+T*
+(-> subset DFA -> minimized DFA -> string testing.) Tj
+T*
+() Tj
+T*
+(2. SUPPORTED REGEX RULES) Tj
+T*
+() Tj
+T*
+(The user may enter normal symbols such as a, b, 0, and 1. The operator | means union, *) Tj
+T*
+(means zero or more, + means one or more, ? means optional, and parentheses group) Tj
+T*
+(expressions.) Tj
+T*
+(Concatenation is implicit. For example, ab means a followed by b. The program inserts an) Tj
+T*
+(internal dot operator only after validation. The user can write # for epsilon.) Tj
+T*
+() Tj
+T*
+(3. MAIN.JAVA) Tj
+T*
+() Tj
+T*
+(Main.java contains only the main method. It creates a UI object and calls start\(\). This) Tj
+T*
+(keeps the program entry point simple and easy to explain.) Tj
+T*
+() Tj
+T*
+(4. UI.JAVA) Tj
+T*
+() Tj
+T*
+(UI.java owns the console menu. Option 1 lets the user enter any regex. Options 2, 3, and) Tj
+T*
+(4 display the NFA, DFA, and minimized DFA. Option 5 tests custom strings. Option 6 runs) Tj
+T*
+(the professor demo test case.) Tj
+T*
+(When a regex is entered, UI resets state numbering, calls RegexParser, builds the NFA,) Tj
+T*
+(converts it to DFA, minimizes it, and stores all results so they can be displayed later.) Tj
+T*
+() Tj
+T*
+(5. REGEXPARSER.JAVA) Tj
+T*
+() Tj
+T*
+(RegexParser validates the expression before any automaton is built. It checks empty) Tj
+T*
+(input, wrong operator positions, missing operands, and unbalanced parentheses.) Tj
+T*
+(After validation, it inserts explicit concatenation internally. Example: ab becomes a.b.) Tj
+T*
+(Then it uses the shunting-yard algorithm to convert infix regex into postfix regex,) Tj
+T*
+(because Thompson construction is easier on postfix input.) Tj
+T*
+() Tj
+T*
+(6. STATE.JAVA AND NFA.JAVA) Tj
+T*
+() Tj
+T*
+(State.java represents one NFA state. Each state has an id such as q0 and a map of) Tj
+T*
+(transitions. A transition maps one symbol to a set of target states, because an NFA can) Tj
+T*
+(have many choices for the same symbol.) Tj
+T*
+(NFA.java stores the start state, final states, all states, and alphabet. It also prints) Tj
+T*
+(a readable list of transitions for presentation.) Tj
+T*
+() Tj
+T*
+(7. THOMPSONCONSTRUCTION.JAVA) Tj
+0 -28 Td
+(Page 1 of 3) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 2607 >>
+stream
+BT
+/F1 10.5 Tf
+14 TL
+54 742 Td
+() Tj
+T*
+(ThompsonConstruction builds small NFA fragments and combines them. For a normal symbol,) Tj
+T*
+(it creates two states with one transition between them.) Tj
+T*
+(For concatenation, final states of the left fragment connect by epsilon to the start of) Tj
+T*
+(the right fragment. For union, a new start branches by epsilon to both fragments and) Tj
+T*
+(both fragments connect to a new final state.) Tj
+T*
+(For star, plus, and optional, the class adds epsilon transitions according to the formal) Tj
+T*
+(definitions of those operators.) Tj
+T*
+() Tj
+T*
+(8. SUBSETCONSTRUCTION.JAVA) Tj
+T*
+() Tj
+T*
+(SubsetConstruction converts the NFA to a DFA. Each DFA state is a set of NFA states. The) Tj
+T*
+(first DFA state is epsilon-closure of the NFA start state.) Tj
+T*
+(For each DFA state and each alphabet symbol, the program applies move\(\), then) Tj
+T*
+(epsilonClosure\(\). If that set has not appeared before, a new DFA state is created.) Tj
+T*
+() Tj
+T*
+(9. DFASTATE.JAVA AND DFA.JAVA) Tj
+T*
+() Tj
+T*
+(DFAState.java stores the set of NFA states represented by one DFA state. It also stores) Tj
+T*
+(whether the DFA state is final.) Tj
+T*
+(DFA.java stores all DFA states, alphabet, start state, and final states. It prints a) Tj
+T*
+(transition table and marks start states with -> and final states with *.) Tj
+T*
+() Tj
+T*
+(10. DFAMINIMIZER.JAVA) Tj
+T*
+() Tj
+T*
+(DFAMinimizer uses partition refinement. It first separates final states from non-final) Tj
+T*
+(states. Then it repeatedly splits groups whose transitions go to different groups.) Tj
+T*
+(When no group can be split again, each group becomes one state in the minimized DFA. A) Tj
+T*
+(trap state is added internally when needed to complete missing transitions.) Tj
+T*
+() Tj
+T*
+(11. STRINGTESTER.JAVA) Tj
+T*
+() Tj
+T*
+(StringTester starts at the minimized DFA start state. For every input character, it) Tj
+T*
+(follows exactly one transition. If the final state after the whole string is a DFA final) Tj
+T*
+(state, the string is accepted.) Tj
+T*
+(It also prints a trace such as D0 --a--> D1 so the professor can see how the input was) Tj
+T*
+(processed.) Tj
+T*
+() Tj
+T*
+(12. PROFESSOR DEMO) Tj
+T*
+() Tj
+T*
+(Menu option 6 runs this regex: \(a|b\)*abb. The language is all strings over {a,b} that) Tj
+T*
+(end with abb.) Tj
+T*
+(Expected accepted strings: abb, aabb, bababb. Expected rejected strings: ab, aba, bbb.) Tj
+T*
+(After the demo runs, the minimized DFA remains loaded, so the user can choose option 5) Tj
+T*
+(and enter any custom test string.) Tj
+T*
+() Tj
+T*
+(13. HOW TO RUN) Tj
+T*
+() Tj
+0 -28 Td
+(Page 2 of 3) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 433 >>
+stream
+BT
+/F1 10.5 Tf
+14 TL
+54 742 Td
+(Command line: cd RegexToDFAProject, then javac -d out src\\*.java, then java -cp out) Tj
+T*
+(Main.) Tj
+T*
+(In IntelliJ: open the RegexToDFAProject folder, mark src as Sources Root if needed, open) Tj
+T*
+(Main.java, and click Run.) Tj
+T*
+(In NetBeans: create a Java project, copy the src files into its src folder, set Main as) Tj
+T*
+(the main class, and run.) Tj
+T*
+() Tj
+0 -602 Td
+(Page 3 of 3) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 8 0 R >>
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000133 00000 n 
+0000000203 00000 n 
+0000002896 00000 n 
+0000003022 00000 n 
+0000005681 00000 n 
+0000005807 00000 n 
+0000006291 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R >>
+startxref
+6417
+%%EOF

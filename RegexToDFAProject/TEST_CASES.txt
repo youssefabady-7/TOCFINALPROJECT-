@@ -1,0 +1,33 @@
+Professor Demo Test Case
+========================
+
+Purpose:
+Show the complete flow from regular expression to NFA, DFA, minimized DFA,
+and string testing.
+
+How to run:
+1. Run Main.java.
+2. Choose option 6: Run professor demo test case.
+
+Demo regular expression:
+(a|b)*abb
+
+Language:
+All strings over {a,b} that end with abb.
+
+Expected accepted strings:
+abb
+aabb
+bababb
+
+Expected rejected strings:
+ab
+aba
+bbb
+
+Custom testing:
+After the demo runs, choose option 5 to test your own strings on the loaded
+minimized DFA.
+
+Custom regular expressions:
+Choose option 1 at any time to enter your own regular expression.

@@ -1,0 +1,232 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Length 2467 >>
+stream
+BT
+/F1 10.5 Tf
+14 TL
+54 742 Td
+(NFA To DFA Visual Simulator - Step By Step Code Explanation) Tj
+T*
+() Tj
+T*
+(1. PROJECT GOAL) Tj
+T*
+() Tj
+T*
+(This project is a separate NFA to DFA visual simulator. The user manually enters an NFA,) Tj
+T*
+(then the program converts it into a DFA and prints clean transition tables.) Tj
+T*
+(The full path is: manual NFA input -> transition storage -> subset construction -> DFA) Tj
+T*
+(table -> string testing.) Tj
+T*
+() Tj
+T*
+(2. MAIN.JAVA) Tj
+T*
+() Tj
+T*
+(Main.java contains the main method. It creates the UI object and starts the menu. The) Tj
+T*
+(entry point stays very small so the rest of the logic is in focused classes.) Tj
+T*
+() Tj
+T*
+(3. UI.JAVA) Tj
+T*
+() Tj
+T*
+(UI.java controls the console experience. Option 1 lets the user enter a custom NFA.) Tj
+T*
+(Option 2 displays the NFA table. Option 3 converts the NFA to a DFA. Option 4 displays) Tj
+T*
+(the DFA table. Option 5 tests strings. Option 6 loads the professor demo NFA.) Tj
+T*
+(For custom NFA input, the user enters states, alphabet, start state, final states, and) Tj
+T*
+(transitions. Epsilon transitions can be written as eps, epsilon, or #.) Tj
+T*
+() Tj
+T*
+(4. STATE.JAVA) Tj
+T*
+() Tj
+T*
+(State.java represents one NFA state using a name such as q0. It stores transitions in a) Tj
+T*
+(map from symbol to a set of states. A set is used because an NFA may move to multiple) Tj
+T*
+(states on the same symbol.) Tj
+T*
+(The class also defines a special internal epsilon symbol. When printed, that symbol) Tj
+T*
+(appears as eps.) Tj
+T*
+() Tj
+T*
+(5. NFA.JAVA) Tj
+T*
+() Tj
+T*
+(NFA.java stores all manually entered NFA data: states, alphabet, start state, final) Tj
+T*
+(states, and transitions.) Tj
+T*
+(It validates important input rules, such as unknown states and symbols not found in the) Tj
+T*
+(alphabet. It also has describe\(\), which prints the NFA table for presentation.) Tj
+T*
+() Tj
+T*
+(6. SUBSETCONSTRUCTION.JAVA) Tj
+T*
+() Tj
+T*
+(SubsetConstruction performs the standard NFA to DFA conversion. A DFA state is) Tj
+T*
+(represented as a set of NFA states.) Tj
+T*
+(The first DFA state is epsilon-closure of the NFA start state. For each DFA state and) Tj
+T*
+(symbol, the program computes move\(\) and then epsilonClosure\(\). If the result is new, it) Tj
+T*
+(becomes a new DFA state.) Tj
+T*
+(The empty set can become a DFA dead state when no NFA transition exists for a symbol.) Tj
+T*
+() Tj
+T*
+(7. DFASTATE.JAVA AND DFA.JAVA) Tj
+T*
+() Tj
+0 -28 Td
+(Page 1 of 2) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 2194 >>
+stream
+BT
+/F1 10.5 Tf
+14 TL
+54 742 Td
+(DFAState.java stores the set of NFA states represented by one DFA state. It also records) Tj
+T*
+(whether that DFA state is final. A DFA state is final if its NFA set contains at least) Tj
+T*
+(one NFA final state.) Tj
+T*
+(DFA.java stores the DFA start state, final states, alphabet, and all transitions. Its) Tj
+T*
+(describe\(\) method prints the DFA state meanings and transition table.) Tj
+T*
+() Tj
+T*
+(8. TRANSITIONTABLEPRINTER.JAVA) Tj
+T*
+() Tj
+T*
+(TransitionTablePrinter is only responsible for display. It prints NFA and DFA transition) Tj
+T*
+(tables in aligned columns. Start states are marked with -> and final states are marked) Tj
+T*
+(with *.) Tj
+T*
+(Keeping this code separate makes the automata classes easier to understand, because) Tj
+T*
+(display formatting is not mixed with conversion logic.) Tj
+T*
+() Tj
+T*
+(9. STRINGTESTER.JAVA) Tj
+T*
+() Tj
+T*
+(StringTester tests a string by starting from the DFA start state and following one) Tj
+T*
+(transition per character.) Tj
+T*
+(If a character is not in the alphabet, the string is rejected. If the final reached) Tj
+T*
+(state is final, the string is accepted. The class also prints the trace of states) Tj
+T*
+(visited.) Tj
+T*
+() Tj
+T*
+(10. PROFESSOR DEMO) Tj
+T*
+() Tj
+T*
+(Menu option 6 loads a ready-made NFA. The language is all strings over {a,b} that end) Tj
+T*
+(with ab.) Tj
+T*
+(Demo NFA states: q0, q1, q2. Alphabet: a, b. Start: q0. Final: q2. Transitions: q0 on a) Tj
+T*
+(to q0 and q1; q0 on b to q0; q1 on b to q2.) Tj
+T*
+(Expected accepted strings: ab, aab, babab. Expected rejected strings: a, aba, bbb.) Tj
+T*
+(After the demo runs, the DFA remains loaded, so the user can choose option 5 and enter) Tj
+T*
+(any custom test string.) Tj
+T*
+() Tj
+T*
+(11. HOW TO RUN) Tj
+T*
+() Tj
+T*
+(Command line: cd NFAToDFAVisualSimulator, then javac -d out src\\*.java, then java -cp) Tj
+T*
+(out Main.) Tj
+T*
+(In IntelliJ: open the NFAToDFAVisualSimulator folder, mark src as Sources Root if) Tj
+T*
+(needed, open Main.java, and click Run.) Tj
+T*
+(In NetBeans: create a Java project, copy the src files into its src folder, set Main as) Tj
+T*
+(the main class, and run.) Tj
+T*
+() Tj
+0 -126 Td
+(Page 2 of 2) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 6 0 R >>
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000127 00000 n 
+0000000197 00000 n 
+0000002716 00000 n 
+0000002842 00000 n 
+0000005088 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+5214
+%%EOF

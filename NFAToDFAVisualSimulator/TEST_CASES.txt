@@ -1,0 +1,42 @@
+Professor Demo Test Case
+========================
+
+Purpose:
+Show the complete flow from manually entered NFA to DFA transition table and
+string testing.
+
+How to run:
+1. Run Main.java.
+2. Choose option 6: Load professor demo NFA.
+
+Demo NFA:
+States: q0, q1, q2
+Alphabet: a, b
+Start state: q0
+Final state: q2
+
+Transitions:
+q0 on a -> q0, q1
+q0 on b -> q0
+q1 on b -> q2
+
+Language:
+All strings over {a,b} that end with ab.
+
+Expected accepted strings:
+ab
+aab
+babab
+
+Expected rejected strings:
+a
+aba
+bbb
+
+Custom testing:
+After the demo runs, choose option 5 to test your own strings on the loaded
+DFA.
+
+Custom NFA input:
+Choose option 1 at any time to enter your own NFA states, alphabet,
+transitions, start state, and final states.
