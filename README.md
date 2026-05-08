@@ -1,6 +1,8 @@
-# TOC Final Project
+# TOCFINALPROJECT-
 
-This repository contains two independent Java console projects for Formal Languages and Automata Theory.
+TOC Final Project for Formal Languages and Automata Theory.
+
+This repository contains two independent Java console projects.
 
 ## Project 1: RegexToDFAProject
 
